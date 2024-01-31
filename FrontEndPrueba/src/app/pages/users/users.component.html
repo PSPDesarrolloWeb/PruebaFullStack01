@@ -1,0 +1,71 @@
+<div class="container">
+    <span>Módulo de administración</span>
+    <h1>Administración de usuarios</h1>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; gap: 20px;">
+            <mat-form-field appearance="fill" style="width: 300px;">
+                <mat-label>Seleccione un departamento</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let departament of departaments">{{departament}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" style="width: 300px;">
+                <mat-label>Seleccione un cargo</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let position of positions">{{position}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button (click)="openDialogCreate()">Crear nuevo usuario</button>
+    </div>
+    <hr>
+    <table mat-table [dataSource]="employees" class="mat-elevation-z8">
+        <tbody>
+            <ng-container matColumnDef="username">
+                <th mat-header-cell *matHeaderCellDef>Usuario</th>
+                <td mat-cell *matCellDef="let employee">{{employee.username}}</td>
+            </ng-container>
+            <ng-container matColumnDef="firstName">
+                <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                <td mat-cell *matCellDef="let employee">{{employee.firstName}}</td>
+            </ng-container>
+            <ng-container matColumnDef="lastName">
+                <th mat-header-cell *matHeaderCellDef>Apellido</th>
+                <td mat-cell *matCellDef="let employee">{{employee.lastName}}</td>
+            </ng-container>
+            <ng-container matColumnDef="departament">
+                <th mat-header-cell *matHeaderCellDef>Departamento</th>
+                <td mat-cell *matCellDef="let employee">{{employee.departament}}</td>
+            </ng-container>
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef>Cargo</th>
+                <td mat-cell *matCellDef="let employee">{{employee.position}}</td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef>Email</th>
+                <td mat-cell *matCellDef="let employee">{{employee.email}}</td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                <td mat-cell *matCellDef="let employee" style="text-align: center;">
+                    <button mat-stroked-button style="background-color: lig; color: green; margin-right: 10px;"
+                        (click)="openDialogUpdate()">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </button>
+                    <button mat-stroked-button color="warn" (click)="openConfirmDialog()">
+                        <i class="bi bi-trash3-fill"></i> Eliminar
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </tbody>
+        <ng-container matColumnDef="footer">
+            <td mat-footer-cell *matFooterCellDef colspan="100%"><b>Total Registros: {{employees.length}}</b></td>
+        </ng-container>
+        <tr mat-footer-row *matFooterRowDef="['footer']"></tr>
+    </table>
+
+</div>

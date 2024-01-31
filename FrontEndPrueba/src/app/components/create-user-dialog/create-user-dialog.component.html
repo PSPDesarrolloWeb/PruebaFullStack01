@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>Registrar usuario</h2>
+<mat-dialog-content>
+    <div style="display: flex; justify-content: space-between;">
+        <mat-form-field style="flex: 1; margin-right: 10px;">
+            <mat-label>Departamento:</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let departament of departaments">{{departament}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="flex: 1; margin-left: 10px;">
+            <mat-label>Cargo:</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let departament of departaments">{{departament}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div style="display: flex; justify-content: space-between;">
+        <mat-form-field style="flex: 1; margin-right: 10px;">
+            <mat-label>Usuario:</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field style="flex: 1; margin-left: 10px;">
+            <mat-label>Email:</mat-label>
+            <input matInput>
+        </mat-form-field>
+    </div>
+    <div style="display: flex; justify-content: space-between;">
+        <mat-form-field style="flex: 1; margin-right: 10px;">
+            <mat-label>Primer nombre:</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field style="flex: 1; margin-left: 10px;">
+            <mat-label>Segundo nombre:</mat-label>
+            <input matInput>
+        </mat-form-field>
+    </div>
+    <div style="display: flex; justify-content: space-between;">
+        <mat-form-field style="flex: 1; margin-right: 10px;">
+            <mat-label>Primer apellido:</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field style="flex: 1; margin-left: 10px;">
+            <mat-label>Segundo apellido:</mat-label>
+            <input matInput>
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions style="display: flex; justify-content: flex-end;">
+    <button mat-raised-button color="primary" (click)="registerUser()">Registrar</button>
+    <button mat-stroked-button (click)="onCancel()">Cancelar</button>
+</mat-dialog-actions>
